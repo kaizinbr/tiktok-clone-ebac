@@ -1,0 +1,58 @@
+.video-footer{
+    position: relative;
+    bottom: 20%;
+    color: whitesmoke;
+    margin: 0 0 0 25px;
+}
+
+.video-footer-text{
+    position: relative;
+}
+
+.video-footer-text > h3 {
+    padding-bottom: 15px;
+}
+
+.video-footer-text > p {
+    padding-bottom: 20px;
+}
+
+.video-footer-music{
+    display: flex;
+}
+
+.video-footer-music-txt{
+    overflow-x: hidden;
+    width: 80%;
+}
+
+.video-footer-music-txt p{
+    animation: move-text 3500ms infinite linear;
+}
+
+.video-footer-record {
+    position: absolute;
+    bottom: 1%;
+    right: 20px;
+    height: 40px;
+    animation: record-spin 3000ms infinite linear;
+    filter: invert(1);
+}
+
+@keyframes record-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes move-text {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
