@@ -1,0 +1,15 @@
+.video-sidebar{
+    position: absolute;
+    top: 45%;
+    right: 2%;
+    color: whitesmoke;
+}
+
+.opt-btn {
+    text-align: center;
+    padding: 15px;
+}
+
+.opt-btn p {
+    font-size: 13px;
+}

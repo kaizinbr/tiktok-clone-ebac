@@ -2,8 +2,9 @@ import React, { useRef, useState } from "react";
 
 import "./Video.css";
 import VideoFooter from "./components/footer/VideoFooter";
+import VideoSideBar from "./components/sideBar/VideoSideBar";
 
-export default function Video() {
+export default function Video({likes, messages, shares, name, desc, music, url}) {
 
     const videoRef = useRef(null)
 
@@ -24,7 +25,7 @@ export default function Video() {
         <div className="video">
             <video 
                 className="video-player" 
-                src="./video.mp4"
+                src={url}
                 ref={videoRef}
                 onClick={handleVideoPress}
                 loop
@@ -32,7 +33,16 @@ export default function Video() {
                 {/* <source  type="video/mp4" /> */}
                 {/* Your browser does not support the video tag. */}
             </video>
-            <VideoFooter/>
+            <VideoSideBar
+                likes={likes}
+                messages={messages}
+                shares={shares}
+            />
+            <VideoFooter
+                name={name}
+                desc={desc}
+                music={music}
+            />
         </div>
 
     )

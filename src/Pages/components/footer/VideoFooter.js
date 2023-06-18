@@ -3,16 +3,16 @@ import "./videoFooter.css"
 import MusicNoteRoundedIcon from '@mui/icons-material/MusicNoteRounded';
 
 
-function VideoFooter() {
+function VideoFooter({name, desc, music}) {
     return (
         <div className='video-footer'>
             <div className='video-footer-text'>
-                <h3>@username</h3>
-                <p>description</p>
+                <h3>@{name}</h3>
+                <p>{desc}</p>
                 <div className='video-footer-music'>
                     <MusicNoteRoundedIcon />
                     <div className="video-footer-music-txt">
-                        <p>Miniskirt - AOA</p>
+                        <p>{music}</p>
                     </div>
                 </div>
             </div>
