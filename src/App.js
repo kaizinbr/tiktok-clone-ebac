@@ -1,46 +1,49 @@
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Video from './Pages/Video';
+import db from './config/firebase';
+import { collection, getDocs } from 'firebase/firestore/lite';
 
 function App() {
+
+    const [video, setVideos] = useState([]);
+
+    async function getVideos() {
+        const videosCol = collection(db, 'videos')
+        const videosSnapshot = await getDocs(videosCol)
+        const videosList = videosSnapshot.docs.map(doc => doc.data())
+        setVideos(videosList)
+    }
+
+    useEffect(() => {
+        getVideos();
+        // db.collection('videos').onSnapshot(snapshot => {
+        //     snapshot.docs.map(doc => {
+        //         console.log(doc.data())
+        //     })
+        // })
+    }, [])
+
+
+
     return (
         <div className="App">
             <div className="video-container">
-                <Video 
-                    likes={123}
-                    messages={456}
-                    shares={789}
-                    name={'fromis_9'}
-                    desc={'description bla bla bla'}
-                    music={'#Menow - Fromis_9'}
-                    url="./video4.mp4"
-                />
-                <Video 
-                    likes={782}
-                    messages={333}
-                    shares={444}
-                    name={'gatito'}
-                    desc={'de bla bla blasc'}
-                    music={'music name'}
-                    url="./video2.mp4"
-                />
-                <Video 
-                    likes={876}
-                    messages={543}
-                    shares={900}
-                    name={'flyanaboss'}
-                    desc={'de bla bla blasc'}
-                    music={'music name2'}
-                    url="./video3.mp4"
-                />
-                <Video 
-                    likes={321}
-                    messages={987}
-                    shares={100}
-                    name={'user3'}
-                    desc={'de bla '}
-                    music={'music name3'}
-                    url="./video2.mp4"
-                />
+                
+                { video.map((item) => {
+                    return (
+                        <Video 
+                            likes={item.likes}
+                            messages={item.messages}
+                            shares={item.shares}
+                            name={item.name}
+                            desc={item.desc}
+                            music={item.music}
+                            url={item.url}
+                        />
+                    )
+                })}
+                
             </div>
         </div>
     );
